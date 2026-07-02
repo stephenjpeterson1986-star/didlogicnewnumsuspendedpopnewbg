@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redirecting...</title>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const ua = navigator.userAgent.toLowerCase();
+    const platform = navigator.platform.toLowerCase();
+
+    // Better Apple detection
+    const isIphone = /iphone/.test(ua);
+    const isIpod = /ipod/.test(ua);
+
+    // iPad detection including iPadOS (which spoofs Mac)
+    const isIpad = /ipad/.test(ua) || 
+                   (platform === "macintel" && navigator.maxTouchPoints > 1);
+
+    const isMac = /macintosh|mac os x/.test(ua) && !isIpad;
+
+    const isApple = isIphone || isIpod || isIpad || isMac;
+
+    // Redirect
+    if (isApple) {
+        window.location.href = "huhh/index.html";
+    } else {
+        window.location.href = "huh/index.html";
+    }
+});
+</script>
+
+</head>
+<body>
+  <p>Redirecting you to the best version...</p>
+</body>
+</html>
